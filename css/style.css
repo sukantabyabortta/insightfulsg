@@ -274,6 +274,47 @@ img { max-width: 100%; display: block; }
 .hero-slider .slick-dots li button:before { color: var(--white); font-size: 10px; opacity: 0.6; }
 .hero-slider .slick-dots li.slick-active button:before { color: var(--gold); opacity: 1; }
 
+.hero-slider .slick-dots {
+    position: absolute;
+    bottom: 30px;          /* Distance from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 10;
+}
+
+.hero-slider .slick-dots li {
+    margin: 0;
+}
+
+.hero-slider .slick-dots li button {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    background: transparent;
+    font-size: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.hero-slider .slick-dots li button:before {
+    display: none;
+}
+
+.hero-slider .slick-dots li.slick-active button {
+    background: #d4af37;
+    transform: scale(1.2);
+}
+
 /* ===== STATS BAR ===== */
 .stats-bar {
     background: var(--dark);
