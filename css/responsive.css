@@ -1,0 +1,72 @@
+/* ===== TABLET: ≤ 1024px ===== */
+@media (max-width: 1024px) {
+    .why-grid { gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+/* ===== TABLET SMALL: ≤ 900px ===== */
+@media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .why-grid { grid-template-columns: 1fr; gap: 56px; }
+    .img-frame img { height: 360px; }
+    .img-badge-card { bottom: -16px; right: -10px; }
+    .why-content-col { padding-left: 0; }
+
+    /* Hide desktop nav */
+    .main-nav, .header-cta { display: none; }
+    .hamburger { display: flex; }
+    .hamburger span { background: var(--dark); }
+}
+
+/* ===== MOBILE: ≤ 600px ===== */
+@media (max-width: 600px) {
+    .section-pad { padding: 60px 0; }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-num { font-size: 2.2rem; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .hero-slide { min-height: 100svh; }
+    .hero-btns { flex-direction: column; align-items: flex-start; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom-inner { flex-direction: column; text-align: center; }
+    .footer-logo img { height: 60px; }
+
+    .back-to-top { bottom: 20px; right: 20px; }
+
+    .testimonial-card { padding: 28px 20px; margin: 8px 4px; }
+
+    .img-badge-card { position: static; margin-top: 16px; border-radius: var(--radius); }
+}
+
+/* ===== MOBILE XS: ≤ 400px ===== */
+@media (max-width: 400px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+}
+
+/* ===== ABOUT PAGE RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .why-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .mvv-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-grid-full { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+@media (max-width: 900px) {
+    .about-split { grid-template-columns: 1fr; gap: 56px; }
+    .about-img-col .img-frame img { height: 360px; }
+    .about-img-col .img-frame::before, .about-img-col .img-frame::after { display: none; }
+    .about-text-col { padding-left: 0; }
+    .mvv-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .page-hero { height: 380px; padding-bottom: 50px; }
+}
+
+@media (max-width: 600px) {
+    .why-cards-grid { grid-template-columns: 1fr; }
+    .stats-grid-full { grid-template-columns: repeat(2, 1fr); }
+    .stats-section { background-attachment: scroll; }
+}
