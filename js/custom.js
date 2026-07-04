@@ -24,73 +24,6 @@ $(function () {
     }, 100);
   }
 
-  AOS.init({
-    duration: 800,
-    easing: "ease-out-cubic",
-    once: true,
-    offset: 80,
-    mirror: false,
-    disable: "mobile",
-  });
-
-  /* Window Scroll */
-  $(window)
-    .on("scroll", function () {
-      const scroll = $(this).scrollTop();
-
-      $("#siteHeader").toggleClass("scrolled", scroll > 50);
-      $("#backToTop").toggleClass("visible", scroll > 400);
-
-      if (
-        $stats.length &&
-        !$stats.hasClass("counted") &&
-        scroll + $(window).height() >= $stats.offset().top + 80
-      ) {
-        $stats.addClass("counted");
-        animateCounters();
-      }
-    })
-    .trigger("scroll");
-
-  /* Back To Top */
-  $("#backToTop").click(function (e) {
-    e.preventDefault();
-    $("html, body").animate({ scrollTop: 0 }, 600);
-  });
-
-  /* Hero Slider */
-  $("#heroSlider").slick({
-    autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 900,
-    fade: true,
-    dots: true,
-    arrows: true,
-    pauseOnHover: false,
-    prevArrow:
-      '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow:
-      '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
-  });
-
-  /* Testimonial Slider */
-  $("#testimonialsSlider").slick({
-    autoplay: true,
-    autoplaySpeed: 4500,
-    speed: 700,
-    dots: true,
-    arrows: true,
-    slidesToShow: 3,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } },
-    ],
-    prevArrow:
-      '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
-    nextArrow:
-      '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
-  });
-
   /* Mobile Menu */
   $("#hamburger").click(() => {
     $("#mobileNav").addClass("open");
@@ -121,4 +54,89 @@ $(function () {
   }
 
   const $stats = $(".stats-bar, .stats-section").first();
+
+  /* Window Scroll */
+  $(window)
+    .on("scroll", function () {
+      const scroll = $(this).scrollTop();
+
+      $("#siteHeader").toggleClass("scrolled", scroll > 50);
+      $("#backToTop").toggleClass("visible", scroll > 400);
+
+      if (
+        $stats.length &&
+        !$stats.hasClass("counted") &&
+        scroll + $(window).height() >= $stats.offset().top + 80
+      ) {
+        $stats.addClass("counted");
+        animateCounters();
+      }
+    })
+    .trigger("scroll");
+
+  /* Back To Top */
+  $("#backToTop").click(function (e) {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, 600);
+  });
+});
+
+/* ==========================
+     AOS
+  ========================== */
+if (typeof AOS !== "undefined") {
+  AOS.init({
+    duration: 800,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 80,
+    mirror: false,
+    disable: "mobile",
+  });
+
+  setTimeout(function () {
+    AOS.refresh();
+  }, 500);
+}
+
+/* ==========================
+     Refresh on Resize
+  ========================== */
+$window.on("resize", function () {
+  if (typeof AOS !== "undefined") {
+    AOS.refresh();
+  }
+});
+
+/* Hero Slider */
+$("#heroSlider").slick({
+  autoplay: true,
+  autoplaySpeed: 5000,
+  speed: 900,
+  fade: true,
+  dots: true,
+  arrows: true,
+  pauseOnHover: false,
+  prevArrow:
+    '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+  nextArrow:
+    '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+});
+
+/* Testimonial Slider */
+$("#testimonialsSlider").slick({
+  autoplay: true,
+  autoplaySpeed: 4500,
+  speed: 700,
+  dots: true,
+  arrows: true,
+  slidesToShow: 3,
+  responsive: [
+    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+    { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } },
+  ],
+  prevArrow:
+    '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+  nextArrow:
+    '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
 });
