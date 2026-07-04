@@ -1,132 +1,124 @@
 $(function () {
+  const HEADER_OFFSET = 110;
 
-    /* ===== ANCHOR SCROLL OFFSET (fixed header) ===== */
-    $(document).on('click', 'a[href*="#"]', function (e) {
-        var href = $(this).attr('href');
-        var hash = href.indexOf('#') !== -1 ? '#' + href.split('#')[1] : null;
-        if (!hash || $(hash).length === 0) return;
-        // only offset if on same page
-        if (href.indexOf('.html') === -1 || href.split('#')[0] === window.location.pathname.split('/').pop()) {
-            e.preventDefault();
-            var offset = $(hash).offset().top - 110;
-            $('html, body').animate({ scrollTop: offset }, 700);
-        }
-    });
+  /* Smooth Scroll */
+  $('a[href*="#"]').on("click", function (e) {
+    const hash = this.hash;
 
-    /* on page load if there is a hash in URL, offset scroll */
-    if (window.location.hash && $(window.location.hash).length) {
-        setTimeout(function () {
-            var offset = $(window.location.hash).offset().top - 110;
-            $('html, body').scrollTop(offset);
-        }, 100);
-    }
+    if (!hash || !$(hash).length) return;
 
-    /* ===== HERO SLIDER ===== */
-    $('#heroSlider').slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        speed: 900,
-        fade: true,
-        cssEase: 'ease-in-out',
-        dots: true,
-        arrows: true,
-        pauseOnHover: false,
-        prevArrow: '<button class="slick-prev slick-arrow"><i class="fa fa-chevron-left"></i></button>',
-        nextArrow: '<button class="slick-next slick-arrow"><i class="fa fa-chevron-right"></i></button>'
-    });
+    e.preventDefault();
 
-    /* ===== TESTIMONIALS CAROUSEL ===== */
-    $('#testimonialsSlider').slick({
-        autoplay: true,
-        autoplaySpeed: 4500,
-        speed: 700,
-        dots: true,
-        arrows: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        pauseOnHover: true,
-        prevArrow: '<button class="slick-prev slick-arrow"><i class="fa fa-chevron-left"></i></button>',
-        nextArrow: '<button class="slick-next slick-arrow"><i class="fa fa-chevron-right"></i></button>',
-        responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 640,  settings: { slidesToShow: 1, arrows: false } }
-        ]
-    });
+    $("html, body").animate(
+      {
+        scrollTop: $(hash).offset().top - HEADER_OFFSET,
+      },
+      700,
+    );
+  });
 
-    /* ===== HAMBURGER / MOBILE NAV ===== */
-    $('#hamburger').on('click', function () {
-        $('#mobileNav').addClass('open');
-        $('#mobileNavOverlay').addClass('active');
-        $('body').css('overflow', 'hidden');
-    });
+  /* Scroll to Hash on Page Load */
+  if (location.hash && $(location.hash).length) {
+    setTimeout(() => {
+      $("html, body").scrollTop($(location.hash).offset().top - HEADER_OFFSET);
+    }, 100);
+  }
 
-    function closeMobileNav() {
-        $('#mobileNav').removeClass('open');
-        $('#mobileNavOverlay').removeClass('active');
-        $('body').css('overflow', '');
-    }
+  AOS.init({
+    duration: 800,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 80,
+    mirror: false,
+    disable: "mobile",
+  });
 
-    $('#mobileNavClose, #mobileNavOverlay').on('click', closeMobileNav);
+  /* Window Scroll */
+  $(window)
+    .on("scroll", function () {
+      const scroll = $(this).scrollTop();
 
-    /* ===== HEADER SCROLL ===== */
-    $(window).on('scroll', function () {
-        var scrollY = $(this).scrollTop();
+      $("#siteHeader").toggleClass("scrolled", scroll > 50);
+      $("#backToTop").toggleClass("visible", scroll > 400);
 
-        // sticky shadow
-        $('#siteHeader').toggleClass('scrolled', scrollY > 50);
-
-        // back to top visibility
-        $('#backToTop').toggleClass('visible', scrollY > 400);
-
-        // stat counter trigger
-        var $statsEl = $('.stats-bar').length ? $('.stats-bar') : $('.stats-section');
-        if ($statsEl.length && scrollY + $(window).height() >= $statsEl.offset().top + 80 && !$statsEl.hasClass('counted')) {
-            $statsEl.addClass('counted');
-            animateCounters();
-        }
-    });
-
-    /* ===== BACK TO TOP ===== */
-    $('#backToTop').on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, 600);
-    });
-
-    /* ===== STAT COUNTER ===== */
-    function animateCounters() {
-        $('.stat-num').each(function () {
-            var $el = $(this);
-            var target = parseInt($el.data('count'), 10);
-            $({ val: 0 }).animate({ val: target }, {
-                duration: 1800,
-                easing: 'swing',
-                step: function () {
-                    $el.text(Math.floor(this.val));
-                },
-                complete: function () {
-                    $el.text(target);
-                }
-            });
-        });
-    }
-
-    // trigger counter if stats already in view on load
-    var $statsEl = $('.stats-bar').length ? $('.stats-bar') : $('.stats-section');
-    if ($statsEl.length && $(window).scrollTop() + $(window).height() >= $statsEl.offset().top + 80) {
-        $statsEl.addClass('counted');
+      if (
+        $stats.length &&
+        !$stats.hasClass("counted") &&
+        scroll + $(window).height() >= $stats.offset().top + 80
+      ) {
+        $stats.addClass("counted");
         animateCounters();
-    }
+      }
+    })
+    .trigger("scroll");
 
-    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
-    var sections = $('section[id]');
-    $(window).on('scroll.nav', function () {
-        var scrollY = $(this).scrollTop() + 80;
-        sections.each(function () {
-            if (scrollY >= $(this).offset().top && scrollY < $(this).offset().top + $(this).outerHeight()) {
-                $('.nav-link').removeClass('active');
-                $('.nav-link[href*="index"]').addClass('active');
-            }
-        });
+  /* Back To Top */
+  $("#backToTop").click(function (e) {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, 600);
+  });
+
+  /* Hero Slider */
+  $("#heroSlider").slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 900,
+    fade: true,
+    dots: true,
+    arrows: true,
+    pauseOnHover: false,
+    prevArrow:
+      '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+  });
+
+  /* Testimonial Slider */
+  $("#testimonialsSlider").slick({
+    autoplay: true,
+    autoplaySpeed: 4500,
+    speed: 700,
+    dots: true,
+    arrows: true,
+    slidesToShow: 3,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } },
+    ],
+    prevArrow:
+      '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+  });
+
+  /* Mobile Menu */
+  $("#hamburger").click(() => {
+    $("#mobileNav").addClass("open");
+    $("#mobileNavOverlay").addClass("active");
+    $("body").css("overflow", "hidden");
+  });
+
+  $("#mobileNavClose, #mobileNavOverlay").click(() => {
+    $("#mobileNav").removeClass("open");
+    $("#mobileNavOverlay").removeClass("active");
+    $("body").css("overflow", "");
+  });
+
+  /* Counter */
+  function animateCounters() {
+    $(".stat-num").each(function () {
+      const target = $(this).data("count");
+
+      $({ num: 0 }).animate(
+        { num: target },
+        {
+          duration: 1800,
+          step: (now) => $(this).text(Math.floor(now)),
+          complete: () => $(this).text(target),
+        },
+      );
     });
+  }
 
+  const $stats = $(".stats-bar, .stats-section").first();
 });
