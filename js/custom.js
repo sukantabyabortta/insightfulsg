@@ -79,6 +79,21 @@ $(function () {
     e.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, 600);
   });
+
+  /* Hero Slider */
+  $("#heroSlider").slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 900,
+    fade: true,
+    dots: true,
+    arrows: true,
+    pauseOnHover: false,
+    prevArrow:
+      '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+    nextArrow:
+      '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
+  });
 });
 
 /* ==========================
@@ -106,37 +121,4 @@ $window.on("resize", function () {
   if (typeof AOS !== "undefined") {
     AOS.refresh();
   }
-});
-
-/* Hero Slider */
-$("#heroSlider").slick({
-  autoplay: true,
-  autoplaySpeed: 5000,
-  speed: 900,
-  fade: true,
-  dots: true,
-  arrows: true,
-  pauseOnHover: false,
-  prevArrow:
-    '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
-  nextArrow:
-    '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
-});
-
-/* Testimonial Slider */
-$("#testimonialsSlider").slick({
-  autoplay: true,
-  autoplaySpeed: 4500,
-  speed: 700,
-  dots: true,
-  arrows: true,
-  slidesToShow: 3,
-  responsive: [
-    { breakpoint: 1024, settings: { slidesToShow: 2 } },
-    { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } },
-  ],
-  prevArrow:
-    '<button class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
-  nextArrow:
-    '<button class="slick-next"><i class="fa fa-chevron-right"></i></button>',
 });
