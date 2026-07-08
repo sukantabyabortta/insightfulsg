@@ -99,23 +99,36 @@ $(function () {
 /* ==========================
      AOS
   ========================== */
-if (typeof AOS !== "undefined") {
-  AOS.init({
-    duration: 800,
-    easing: "ease-out-cubic",
-    once: true,
-    offset: 80,
-    mirror: false,
-    // disable: "mobile",
-    disable: function () {
-      return window.innerWidth <= 768;
-    },
-  });
+// if (typeof AOS !== "undefined") {
+//   AOS.init({
+//     duration: 800,
+//     easing: "ease-out-cubic",
+//     once: true,
+//     offset: 80,
+//     mirror: false,
+//     // disable: "mobile",
+//     disable: function () {
+//       return window.innerWidth <= 768;
+//     },
+//   });
 
-  setTimeout(function () {
-    AOS.refresh();
-  }, 500);
-}
+//   setTimeout(function () {
+//     AOS.refresh();
+//   }, 500);
+// }
+
+AOS.init({
+  duration: 800,
+  easing: "ease-out-cubic",
+  once: true,
+  offset: 80,
+  mirror: false,
+  disable: () => window.innerWidth <= 767
+});
+
+window.addEventListener("resize", function () {
+  AOS.refreshHard();
+});
 
 /* ==========================
      Refresh on Resize
