@@ -106,7 +106,10 @@ if (typeof AOS !== "undefined") {
     once: true,
     offset: 80,
     mirror: false,
-    disable: "mobile",
+    // disable: "mobile",
+    disable: function () {
+      return window.innerWidth <= 768;
+    },
   });
 
   setTimeout(function () {
