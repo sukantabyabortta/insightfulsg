@@ -86,7 +86,7 @@ $(function () {
     autoplaySpeed: 5000,
     speed: 900,
     fade: true,
-    dots: true,
+    dots: false,
     arrows: true,
     pauseOnHover: false,
     prevArrow:
@@ -99,36 +99,20 @@ $(function () {
 /* ==========================
      AOS
   ========================== */
-// if (typeof AOS !== "undefined") {
-//   AOS.init({
-//     duration: 800,
-//     easing: "ease-out-cubic",
-//     once: true,
-//     offset: 80,
-//     mirror: false,
-//     // disable: "mobile",
-//     disable: function () {
-//       return window.innerWidth <= 768;
-//     },
-//   });
+if (typeof AOS !== "undefined") {
+  AOS.init({
+    duration: 800,
+    easing: "ease-out-cubic",
+    once: true,
+    offset: 80,
+    mirror: false,
+    disable: "mobile",
+  });
 
-//   setTimeout(function () {
-//     AOS.refresh();
-//   }, 500);
-// }
-
-AOS.init({
-  duration: 800,
-  easing: "ease-out-cubic",
-  once: true,
-  offset: 80,
-  mirror: false,
-  disable: () => window.innerWidth <= 767
-});
-
-window.addEventListener("resize", function () {
-  AOS.refreshHard();
-});
+  setTimeout(function () {
+    AOS.refresh();
+  }, 500);
+}
 
 /* ==========================
      Refresh on Resize
