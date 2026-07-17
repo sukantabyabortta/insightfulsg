@@ -20,10 +20,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
             rel="stylesheet">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet"
+            href="css/slick.css">
         <!-- AOS - Animate On Scroll CSS -->
         <link rel="stylesheet"
             href="css/aos.css">
@@ -36,9 +38,9 @@
         <header class="site-header" id="siteHeader" data-aos="fade-down"
             data-aos-duration="600" data-aos-once="true">
             <div class="container header-inner">
-                <a href="https://sukantabyabortta.github.io/insightfulsg/"
+                <a href="index.html"
                     class="logo">
-                    <img src="images/logo.png"
+                    <img src="images/logo3.png"
                         alt="Insightful Business Consultant"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <span
@@ -47,17 +49,20 @@
                 <nav class="main-nav" id="mainNav">
                     <ul class="nav-list">
                         <li><a
-                                href="https://sukantabyabortta.github.io/insightfulsg/"
+                                href="index.html"
                                 class="nav-link">Home</a></li>
                         <li><a href="about.html" class="nav-link">About</a></li>
                         <li><a href="services.html"
                                 class="nav-link">Services</a></li>
+                        <li><a href="faq.html"
+                                class="nav-link">FAQ</a></li>
                         <li><a href="contact.html"
                                 class="nav-link active">Contact</a></li>
                     </ul>
                 </nav>
                 <a href="contact.html" class="btn btn-primary header-cta">Get
-                    Started</a>
+                    Free
+                    Consultation</a>
                 <button class="hamburger" id="hamburger"
                     aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -69,13 +74,15 @@
                         class="fa fa-times"></i></button>
                 <ul class="mobile-nav-list">
                     <li><a
-                            href="https://sukantabyabortta.github.io/insightfulsg/">Home</a></li>
+                            href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
                 <a href="contact.html" class="btn btn-primary mobile-cta">Get
-                    Started</a>
+                    Free
+                    Consultation</a>
             </nav>
         </header>
 
@@ -95,7 +102,7 @@
                     <nav class="breadcrumb" data-aos="fade-up"
                         data-aos-duration="800" data-aos-delay="200">
                         <a
-                            href="https://sukantabyabortta.github.io/insightfulsg/">Home</a>
+                            href="index.html">Home</a>
                         <i
                             class="fa fa-chevron-right"></i>
                         <span>Contact</span>
@@ -283,16 +290,16 @@
             <div class="container footer-grid">
                 <div class="footer-col footer-about" data-aos="fade-up"
                     data-aos-duration="700">
-                    <a href="https://sukantabyabortta.github.io/insightfulsg/"
+                    <a href="index.html"
                         class="footer-logo">
-                        <img src="images/logo.png" alt="Insightful BC"
+                        <img src="images/logo3.png" alt="Insightful BC"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
                         <span class="logo-text-fallback"
                             style="display:none">Insightful<span>BC</span></span>
                     </a>
                     <p>A trusted business advisory partner dedicated to helping
                         organisations achieve sustainable growth.</p>
-                    <div class="social-links">
+                    <!-- <div class="social-links">
                         <a
                             href="https://www.linkedin.com/in/anubha-jain-bajoria"
                             target="_blank" rel="noopener"><i
@@ -301,14 +308,14 @@
                             href="#"
                             target="_blank" rel="noopener"><i
                                 class="fab fa-facebook-f"></i></a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="footer-col" data-aos="fade-up"
                     data-aos-duration="700" data-aos-delay="100">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a
-                                href="https://sukantabyabortta.github.io/insightfulsg/"><i
+                                href="index.html"><i
                                     class="fa fa-chevron-right"></i>
                                 Home</a></li>
                         <li><a href="about.html"><i
@@ -317,6 +324,9 @@
                         <li><a href="services.html"><i
                                     class="fa fa-chevron-right"></i>
                                 Services</a></li>
+                        <li><a href="faq.html"><i
+                                    class="fa fa-chevron-right"></i>
+                                FAQ</a></li>
                         <li><a href="contact.html"><i
                                     class="fa fa-chevron-right"></i>
                                 Contact</a></li>
@@ -357,6 +367,14 @@
                                 href="tel:+6599999999">+65 86518674</a></li>
                         <li><i class="fa fa-envelope"></i> <a
                                 href="mailto:anubha@insightfulsg.com">anubha@insightfulsg.com</a></li>
+                        <li><i class="fa fa-clock"></i> Business Hours: 9 am – 6
+                            pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up"
+                    data-aos-duration="700" data-aos-delay="200">
+                    <h4>Follow Us</h4>
+                    <ul class="contact-list">
                         <li><i class="fab fa-linkedin"></i> <a
                                 href="https://www.linkedin.com/in/anubha-jain-bajoria"
                                 target="_blank" rel="noopener">LinkedIn
@@ -365,8 +383,6 @@
                                 href="#"
                                 target="_blank" rel="noopener">Facebook
                                 Profile</a></li>
-                        <li><i class="fa fa-clock"></i> Business Hours: 9 am – 6
-                            pm</li>
                     </ul>
                 </div>
             </div>
