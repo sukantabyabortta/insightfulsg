@@ -74,6 +74,25 @@ $(function () {
     })
     .trigger("scroll");
 
+  /* FAQ Accordion */
+  $(".faq-content").hide();
+  $(".faq-item.active .faq-content").show();
+
+  $(".faq-title").on("click", function () {
+    var item = $(this).parent();
+
+    if (item.hasClass("active")) {
+      item.removeClass("active");
+      item.find(".faq-content").slideUp(300);
+    } else {
+      $(".faq-item").removeClass("active");
+      $(".faq-content").slideUp(300);
+
+      item.addClass("active");
+      item.find(".faq-content").slideDown(300);
+    }
+  });
+
   /* Back To Top */
   $("#backToTop").click(function (e) {
     e.preventDefault();
