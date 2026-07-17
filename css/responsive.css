@@ -1,5 +1,13 @@
-/* ===== TABLET: ≤ 1024px ===== */
+/* ===== PAGE RESPONSIVE ===== */
 @media (max-width: 1024px) {
+    .services-intro-inner {
+        gap: 48px;
+    }
+
+    .svc-block-inner {
+        gap: 48px;
+    }
+
     .why-grid {
         gap: 48px;
     }
@@ -8,6 +16,39 @@
         grid-template-columns: 1fr 1fr;
         gap: 36px;
     }
+
+    .contact-layout {
+        gap: 40px;
+    }
+
+    .contact-info-panel {
+        padding: 40px 32px;
+    }
+
+    .contact-form-panel {
+        padding: 40px 36px;
+    }
+}
+
+/* FAQ RESPONSIVE */
+@media(max-width:991px) {
+
+    .faq-section {
+        padding: 70px 0;
+    }
+
+    .faq-title {
+        padding: 18px;
+    }
+
+    .faq-title h4 {
+        font-size: 17px;
+    }
+
+    .faq-content {
+        padding: 0 18px 18px;
+    }
+
 }
 
 /* ===== TABLET SMALL: ≤ 900px ===== */
@@ -56,12 +97,145 @@
     .hamburger span {
         background: var(--dark);
     }
+
+    .services-intro-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .svc-block-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* always show image first on mobile */
+    .svc-block-alt .svc-content-col {
+        order: 2;
+    }
+
+    .svc-block-alt .svc-img-col {
+        order: 1;
+    }
+
+    .svc-img-wrap img {
+        height: 300px;
+    }
+
+    .svc-features {
+        grid-template-columns: 1fr;
+    }
+
+    .tagline-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 28px;
+    }
+
+    .svc-content-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-panel {
+        position: static;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .map-pin-card {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+        border-radius: 0;
+        max-width: 100%;
+        min-width: unset;
+        white-space: normal;
+    }
+
+    .contact-layout-full {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-map-col {
+        min-height: 380px;
+    }
+
+    .contact-map-col iframe {
+        min-height: 380px;
+    }
+
+    .contact-layout-full .contact-info-panel {
+        padding: 40px 32px;
+    }
+
+    .contact-layout-full {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .contact-layout-full .contact-info-panel {
+        min-height: auto !important;
+        padding: 40px 32px !important;
+    }
+
+    .contact-map-col,
+    .contact-map-col iframe {
+        min-height: 380px;
+    }
+
+    .trust-bar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-item {
+        border-right: none;
+        border-bottom: 1px solid #ece9e0;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps-grid::before {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-box-info {
+        padding: 44px 32px;
+    }
+
+    .contact-box-map {
+        min-height: 380px;
+        position: relative;
+    }
+
+    .contact-box-map iframe {
+        position: absolute;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-box-info {
+        padding: 32px 24px;
+    }
 }
 
 /* ===== MOBILE: ≤ 600px ===== */
 @media (max-width: 600px) {
     .business-info-box {
-        padding: 28px 22px;
+        padding: 28px 10px;
     }
 
     .section-pad {
@@ -116,6 +290,44 @@
         position: static;
         margin-top: 16px;
         border-radius: var(--radius);
+    }
+
+    .svc-block {
+        padding: 60px 0;
+    }
+
+    .services-quick-nav {
+        display: none;
+    }
+
+    .contact-form-panel {
+        padding: 28px 22px;
+    }
+
+    .contact-info-panel {
+        padding: 32px 24px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .trust-bar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .business-info-box ul li strong {
+        display: block;
     }
 }
 
